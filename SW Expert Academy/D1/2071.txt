@@ -1,0 +1,25 @@
+#include<cstdio>
+#include<cmath>
+#include<stack>
+typedef long long ll;
+using namespace std;
+int main()
+{
+	int size,num,sum;
+	float avg;
+	scanf("%d",&size);
+	
+	for(int i = 0; i < size; i++)
+	{
+		avg = 0.0;
+		sum = 0;
+		for(int j = 0; j < 10; j++)
+		{
+			scanf("%d",&num);
+			sum += num;
+			
+		}
+		printf("#%d %d\n",i+1,(int)(sum/(float)10+0.5));
+	}
+	return 0;
+ } 
