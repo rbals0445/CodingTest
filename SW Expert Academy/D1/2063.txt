@@ -1,0 +1,17 @@
+#include<cstdio>
+#include<algorithm>
+using namespace std;
+int main(void)
+{
+	int size;
+	int arr[200];
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d",&arr[i]);
+	}
+	sort(arr,arr+size);
+	printf("%d\n",arr[size/2]);
+	
+
+}

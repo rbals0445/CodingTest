@@ -1,0 +1,17 @@
+#include<cstdio>
+#include<algorithm>
+using namespace std;
+int main(void)
+{
+	int num,i=1000;
+	int sum = 0;
+	scanf("%d",&num);
+	while(i)
+	{
+		sum += num / i;
+		num = num % i;
+		i /= 10;
+	}
+	printf("%d\n",sum);
+
+}
