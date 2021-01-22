@@ -1,0 +1,14 @@
+#include<cstdio>
+#include<cstring>
+typedef long long ll;
+using namespace std;
+int main()
+{
+	char word[100001];
+	int p,k;
+	scanf("%d %d",&p,&k);
+	printf("%d",p-k+1);
+	
+	
+	return 0;
+ } 

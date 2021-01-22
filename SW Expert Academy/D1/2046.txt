@@ -1,0 +1,18 @@
+#include<cstdio>
+#include<cstring>
+typedef long long ll;
+using namespace std;
+int main()
+{
+	char word[100001];
+	int size;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		printf("#");
+	}
+	
+	
+	
+	return 0;
+ } 

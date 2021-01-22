@@ -1,0 +1,26 @@
+#include<cstdio>
+#include<cmath>
+#include<stack>
+typedef long long ll;
+using namespace std;
+int main()
+{
+	int size,y,m,d;
+	int month[13] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
+	scanf("%d",&size);
+	
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%4d%2d%2d",&y,&m,&d);
+		if( m >= 1 && m <= 12 && (d >= 1 && d <= month[m]))
+		{
+			//유호한경우 
+			printf("#%d %04d/%02d/%02d\n",i+1,y,m,d);
+			
+		}else{
+			printf("#%d -1\n",i+1);
+		}
+		
+	}
+	return 0;
+ } 

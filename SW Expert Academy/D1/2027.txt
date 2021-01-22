@@ -1,0 +1,16 @@
+#include<cstdio>
+#include<cstring>
+typedef long long ll;
+using namespace std;
+int main()
+{
+	int size,x,y;
+	
+	printf("#++++\n");
+	printf("+#+++\n");
+	printf("++#++\n");
+	printf("+++#+\n");
+	printf("++++#\n");
+	
+	return 0;
+ } 

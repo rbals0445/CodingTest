@@ -1,0 +1,12 @@
+#include<cstdio>
+#include<cstring>
+typedef long long ll;
+using namespace std;
+int main()
+{
+	int n;
+	int x,y;
+	scanf("%d %d",&x,&y);
+	printf("%d\n%d\n%d\n%d\n",x+y,x-y,x*y,(int)(x/(float)y));
+	return 0;
+ } 
