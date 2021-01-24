@@ -1,0 +1,40 @@
+#include<cstdio>
+#include<algorithm>
+using namespace std;
+void print(int num)
+{
+	int i = 1000;
+	int index = 0;
+	int flag = 0;
+	int temp;
+	int origin = num;
+	while(i)
+	{
+		temp = num / i;
+		num %= i;
+		i /= 10;
+		//printf("%d\n",temp);
+		if(temp != 0  && (temp%3 == 0 || temp%6 == 0 || temp % 9 == 0))
+		{
+			printf("-");
+			flag++;
+		}
+	}
+	if(!flag)
+		printf("%d ",origin);
+	else
+		printf(" ");
+	
+}
+int main(void)
+{
+	int num;
+	
+	scanf("%d",&num);
+	
+	for(int i = 1; i <= num; i++)
+	{
+		print(i);
+	}
+
+}
