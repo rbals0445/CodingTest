@@ -1,0 +1,38 @@
+#include<cstdio>
+#include<cstring>
+using namespace std;
+int main(void)
+{
+	int sum,size;
+	int num;
+	int arr[10];
+	int avg;
+	scanf("%d",&size);
+	int min,max;
+	for(int i = 0; i < size; i++)
+	{
+		min = 100;
+		max = -100;
+		for(int j = 0; j < 10; j++)
+		{
+			scanf("%d",&arr[j]);
+			if(min > arr[j])
+				min = arr[j];
+			if(max < arr[j])
+				max = arr[j];
+		}
+		
+		sum = 0;
+		for(int k = 0; k < 10; k++)
+		{
+			if(arr[k] != min && arr[k] != max)
+			{
+				sum += arr[k];
+			}
+		}
+		avg = (int)(sum / 8.0 + 0.5);
+		printf("#%d %d\n",i+1,avg);
+
+	}
+	
+}

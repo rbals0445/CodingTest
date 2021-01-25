@@ -1,0 +1,29 @@
+#include<cstdio>
+#include<cstring>
+using namespace std;
+int main(void)
+{
+	int size;
+	char word[11]= "korea";
+	int len;
+	int flag;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%s",word);
+		len = strlen(word);
+		flag = 0;
+		for(int j = 0; j <= len/2; j++)
+		{
+			if(!(word[j] == word[len-j-1])){
+				printf("#%d 0\n",i+1);
+				flag = 1;
+				break;
+			}
+		}
+		if(!flag)
+			printf("#%d 1\n",i+1);
+		
+	}		
+	
+}
