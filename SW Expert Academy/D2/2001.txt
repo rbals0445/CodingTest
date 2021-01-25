@@ -1,0 +1,55 @@
+#include<cstdio>
+#include<cstring>
+typedef long long ll;
+using namespace std;
+int Board[15][15];
+int main()
+{
+
+	int tc;
+	int N,M;// N = BoardSize, M = attack size 
+	int max;
+	int sum = 0;
+	scanf("%d",&tc);
+	for(int i = 0; i < tc; i++)
+	{
+		scanf("%d %d",&N,&M);
+		max = 0;
+		for(int j = 0; j < N; j++)
+		{
+			for(int k = 0; k < N;k++)
+			{
+				scanf("%d",&Board[j][k]);
+			}
+		}
+		// Make  Board 
+		
+		for(int j = 0; j <= N-M; j++)
+		{
+			for(int k = 0; k <= N-M;k++) // N-M 인 이유.  불필요한 부분 제거 
+			{
+				sum = 0;
+				for(int x = 0; x < M; x++)
+				{
+					for(int y = 0; y < M; y++)
+					{
+						sum += Board[j+x][k+y];
+						
+					}
+				}
+				if( max < sum){
+					max = sum;
+				}
+				
+			}
+		}
+		
+		printf("#%d %d\n",i+1,max);
+		
+		
+	}
+	
+	 
+	
+	return 0;
+ } 
