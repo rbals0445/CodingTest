@@ -15,3 +15,6 @@ scanf("%1d%1d%1d%1d%1d,&a,&b,&c,&d,&e);
 
 5. a부터 받은 수 까지 출력하라고 할때 ascii 97이 기억이 안나면
 for(int i = (int)'a'; i <= (int)(받은문자) ; i++) 로 해도 가능하다.
+
+6. brute-force 문제에서 Array Bound Check가 필요할때에
+for문을 움직여서 bound check가 필요없는 범위를 최대한 설정해보는 것이 바람직함.
