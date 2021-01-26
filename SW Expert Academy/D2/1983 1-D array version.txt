@@ -1,0 +1,37 @@
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+using namespace std;
+bool comparator(double i,double j){
+	return i>j;
+}
+int main(void)
+{
+	int size;
+	int num, k;
+	int s1,s2,s3;
+	int div;
+	char grade[10][3] = {"A+","A0","A-","B+","B0","B-","C+","C0","C-","D0"};
+	double res[105];
+	double score;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d %d",&num,&k);
+		for(int j = 0; j < num; j++)
+		{
+			scanf("%d %d %d",&s1,&s2,&s3);
+			res[j] = s1 * 0.35 + s2 * 0.45 + s3 * 0.2;
+		}
+		score = res[k-1];
+		sort(res,res+num,comparator);
+		for(int x = 0; x < num; x++)
+		{
+			if(score == res[x]){		
+				
+				printf("#%d %s\n",i+1,grade[x/(num/10)]);
+				break;
+			}
+		}	
+	}
+}
