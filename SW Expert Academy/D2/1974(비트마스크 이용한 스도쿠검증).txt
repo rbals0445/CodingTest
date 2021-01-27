@@ -1,0 +1,72 @@
+#include<cstdio>
+#include<cstring>
+typedef long long ll;
+using namespace std;
+int board[10][10];
+void solve(int i)
+{
+	int result = 0;
+	int sero[10]={0,};
+	int m_board[10]={0,};
+	int m_sum =0;
+	for(int x = 0; x < 9; x++)
+	{
+		result = 0;
+		m_sum = 0;
+		for(int y = 0; y < 9; y++)
+		{
+			result |= 1 << board[x][y]; // 가로 체크
+			sero[y] |= 1 << board[x][y]; // 세로 체크  
+			m_board[y] |= 1 << board[x][y];
+		}
+		
+		if(result != 1022)
+		{
+			printf("#%d 0\n",i+1);
+			return;
+		}
+		
+		//3x3 체크 (5x5면 % 5 하면 됨) 
+		// x+1 %3 을 해서 틀린걸 못찾고 있었음. (x+1) % 3 을 해야하는데.. 
+		if( (x+1) % 3 == 0){
+			for(int z = 0; z < 9; z+=3){
+				m_sum = m_board[z] | m_board[z+1] | m_board[z+2];
+				m_board[z] = 0; m_board[z+1] = 0; m_board[z+2] = 0;
+				if(m_sum != 1022)
+				{
+					printf("#%d 0\n",i+1);
+					return;		
+				}
+			}
+		}	
+	}
+	
+	for(int z = 0; z < 9; z++){
+		if(sero[z] != 1022){
+			printf("#%d 0\n",i+1);
+			return;
+		}
+	} 
+	printf("#%d 1\n",i+1);
+	return;
+
+}
+int main()
+{
+	int size;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		//c = c |  1 << elem
+		for(int x = 0; x < 9; x++)
+		{
+			for(int y = 0; y < 9; y++)
+			{
+				scanf("%d",&board[x][y]);
+			}
+		}
+		
+		solve(i);	
+	}
+	return 0;
+ } 
