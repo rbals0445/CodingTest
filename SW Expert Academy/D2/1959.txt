@@ -1,0 +1,64 @@
+#include<cstdio>
+#include<iostream>
+#include<cstring>
+#include<algorithm>
+#define max(a,b) ((a) > (b)? (a) : (b))
+typedef long long ll;
+using namespace std;
+
+int main(void)
+{
+	int size;
+	int N[20]={0,};
+	int M[20]={0,};
+	int n_size,m_size;
+	
+	ll temp,result;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d %d",&n_size,&m_size);
+		
+		result = 0;
+		temp = 0;
+		for(int x = 0; x < n_size; x++)
+		{
+			scanf("%d",&N[x]);	
+		}
+		for(int y = 0; y < m_size; y++)
+		{
+			scanf("%d",&M[y]);
+		}
+		
+		// 큰걸 조금씩 줄여가면 서 곱해보자. 
+		if(m_size < n_size){
+			for(int k = 0; k <= n_size - m_size; k++)
+			{
+				temp = 0;
+				for(int j = 0; j < m_size; j++)
+				{
+					temp += M[j] * N[k+j];
+					//M이 더 작으니까 m은 가만히 있고 n을 움직여야함. 
+				}
+				result = max(result,temp);
+			}
+		}else if(m_size > n_size)
+		{
+			for(int k = 0; k <= m_size - n_size; k++)
+			{
+				temp = 0; 
+				for(int j = 0; j < n_size; j++)
+				{
+					temp += N[j] * M[k+j];
+				}
+				result = max(result,temp);
+			}
+		}else{ // 두개가 같으면 그냥 곱해야함 
+			for(int k = 0; k < m_size; k++){
+				result += M[k] + N[k];
+			}
+		}
+		
+		printf("#%d %d\n",i+1,result);
+	}
+}
