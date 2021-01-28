@@ -1,0 +1,58 @@
+#include<cstdio>
+#include<cstring>
+#include<vector>
+#include<algorithm>
+#include<iostream>
+typedef long long ll;
+using namespace std;
+int board[7][7];
+int main(void)
+{
+	int size;
+	int num;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d",&num);
+		for(int x = 0; x < num; x++)
+		{
+			for(int y = 0; y < num; y++)
+			{
+				scanf("%d",&board[x][y]);
+			}
+		}
+		printf("#%d\n",i+1);
+		// 옮겨지는 규칙은 발견했음.
+		// but 옮기고 나서 찍어야함. 
+		for(int x = 0; x < num; x++)
+		{
+			//90
+			for(int y = 0; y < num; y++)
+			{
+				printf("%d",board[num-y-1][x]); 
+			}
+			
+			printf(" ");
+			//180
+			for(int y = 0; y < num; y++)
+			{
+				printf("%d",board[num-1-x][num-1-y]);
+				
+			}
+			//270
+			printf(" ");
+			
+			for(int y = 0; y < num; y++)
+			{
+				printf("%d",board[y][num-1-x]);
+				
+			}
+		
+			printf("\n");
+		}
+		
+	}
+	
+	return 0;
+ } 
+ 
