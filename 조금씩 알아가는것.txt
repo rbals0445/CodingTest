@@ -46,3 +46,6 @@ auto는 형을 자동으로 파악해서 지정해줌. int로 해도됨. for(typ
 
 13.[달팽이수열] dfs는 한 방향을 다 가고, 다음방향 이렇게는 불가능하다. 
 벽에 부딪히면 mx,my로 방향 바꿔주기 이용.
+
+14. prefix sum은 pre[0] = original[0]
+for i =1 ;   pre[i] = pre[i-1] + origin[i];
