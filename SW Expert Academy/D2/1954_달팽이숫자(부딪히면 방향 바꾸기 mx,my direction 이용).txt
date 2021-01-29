@@ -1,0 +1,68 @@
+#include<cstdio>
+#include<iostream>
+#include<stack>
+#include<algorithm>
+
+typedef long long ll;
+using namespace std;
+int mx[4]={0,1,0,-1};
+int my[4]={1,0,-1,0};
+// 그러면 right down left up 순서로 이동 
+void dfs(int i,int num)
+{
+	stack< pair<int, int> > s;
+	int x,y;
+	int visited[10][10] ={0,};
+	int board[10][10]={0,};
+	int inc = 1;
+	int d = 0;//direction , default : right
+	int posx,posy;
+	s.push({0,0});
+	// right, down, left 
+	while(!s.empty()) {
+		x = s.top().first;
+		y = s.top().second;
+		s.pop();
+		if(visited[x][y]) continue;
+		else visited[x][y] = 1;
+		board[x][y] = inc++;
+		posx = x+mx[d];
+		posy = y+my[d];
+		
+		if(posx >= 0 && posx < num && posy >=0 && posy < num && !visited[posx][posy]){
+			s.push({posx,posy});
+		}else{
+			d++;
+			if(d>3) d %=4;
+			posx = x+mx[d];
+			posy = y+my[d];
+			if(posx >= 0 && posx < num && posy >=0 && posy < num && !visited[posx][posy])
+				s.push({posx,posy});
+		}
+		
+	}
+	
+	printf("#%d\n",i+1);
+	for(int x = 0; x < num; x++)
+	{
+		for(int y = 0; y < num; y++)
+		{
+			printf("%d ",board[x][y]);
+		}
+		printf("\n");
+	}
+}
+int main(void)
+{
+	int size;
+	int num;
+	
+	
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d",&num);
+		dfs(i,num);
+	}
+	return 0;
+}
