@@ -1,0 +1,37 @@
+#include<cstdio>
+#include<cstring>
+#include<iostream>
+#include<vector>
+#include<algorithm>
+typedef long long ll;
+using namespace std;
+int main(void)
+{
+	// 0 ~9 까지니까 1023이면 될듯. 
+	int size,n;
+	int result,temp,digit;
+	int mul;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d",&n);
+		result = 0;
+		temp = n;
+		mul = 1;
+		while(1)
+		{
+			while(temp){
+				digit = temp % 10;
+				result |= 1 << digit;
+				temp /= 10;
+			}
+			if(result == 1023) break;
+			mul++;
+			temp = n * mul;
+			
+		}
+		printf("#%d %d\n",i+1,n*mul);
+	
+	}
+	return 0;
+}

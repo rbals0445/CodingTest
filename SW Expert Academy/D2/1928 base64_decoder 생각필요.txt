@@ -1,0 +1,81 @@
+#include<cstdio>
+#include<cstring>
+#include<iostream>
+#include<vector>
+#include<algorithm>
+typedef long long ll;
+using namespace std;
+// 그러면 right down left up 순서로 이동 
+char encode[]="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+int bin[24];
+int idx;
+void solve(int num)
+{
+	int start = (idx+1) * 6 - 1;
+	int end = idx * 6;
+	for(int i = start; i >= end; i--){
+		if(num == 1){
+			bin[i] = 1;
+			num = 0;
+			continue;
+		}else if(num < 1){
+			bin[i] = 0;
+			continue;
+		}
+		bin[i] = num % 2;
+		num /= 2;
+	}
+	idx++;
+}
+int find(char c){
+	for(int i = 0; i < 64; i++)
+	{
+		if(encode[i] == c)
+		{
+			return i;
+		}
+			
+	}
+	
+}
+int btd(int pos)
+{
+	// 0번째 1번째 2번째. 
+	int start = (pos+1) * 8 -1;
+	int end = pos * 8;
+	int sum = 0;
+	double weight = 0.0;
+	for(int i = start; i >= end; i--)
+	{	
+		if(bin[i] == 1)
+			sum += (int)pow(2.0,weight);
+		weight++;
+	}
+	return sum;
+}
+// encode 숫자 보냄 4글자 집어 -> 2진수로 변환 ->  8개씩 잘라서 10진수로 변환 후 출력  3글자 
+int main(void)
+{
+	int size,num;
+	int len;
+	char word[100005];
+	
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%s",word);
+		len = strlen(word);		
+		printf("#%d ",i+1);
+		for(int x = 0; x < len; x++)
+		{
+			solve(find(word[x]));
+			if((x+1) % 4 == 0){
+				idx = 0;	
+				printf("%c%c%c",btd(0),btd(1),btd(2));
+			} 
+		}
+		printf("\n");
+		
+	}
+	return 0;
+}
