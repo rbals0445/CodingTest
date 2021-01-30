@@ -1,0 +1,39 @@
+#include<cstdio>
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+typedef long long ll;
+using namespace std;
+// 그러면 right down left up 순서로 이동 
+int main(void)
+{
+	int size,num;
+	int arr[5] = {2,3,5,7,11};
+	 
+	int index = 0;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		index = 0;
+		int *cnt = new int[5]();
+		
+		scanf("%d",&num);
+		while(index < 5 && num > 1){
+			if(num % arr[index] == 0)
+			{
+				cnt[index]++;
+				num /= arr[index];
+			}
+			else
+				index++;
+		}
+		printf("#%d ",i+1);
+		for(int x = 0; x < 5; x++)
+			printf("%d ",cnt[x]);
+		printf("\n");
+		delete[] cnt;
+	}
+	
+	return 0;
+}
