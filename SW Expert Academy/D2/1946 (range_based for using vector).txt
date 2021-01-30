@@ -1,0 +1,46 @@
+#include<cstdio>
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+typedef long long ll;
+using namespace std;
+// 그러면 right down left up 순서로 이동 
+int main(void)
+{
+	int size,cnt,num,second;
+	char ch;
+	int ln;
+	
+	vector<pair < char, int>> v;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d",&num);
+		for(int j = 0; j < num; j++)
+		{
+			
+			cin >> ch >> cnt;
+			v.push_back(make_pair(ch,cnt));	
+		}
+		ln = 0;
+		printf("#%d\n",i+1);
+		for(auto elem : v)
+		{
+			second = elem.second;
+			for(int i = 0; i < second; i++)
+			{
+				printf("%c",elem.first);
+				ln++;
+				if(ln == 10){
+					printf("\n");
+					ln = 0;	
+				} 
+			}
+		}
+		printf("\n");
+		v.clear();
+	}
+	
+	return 0;
+}
