@@ -1,0 +1,31 @@
+#include<cstdio>
+#include<cstring>
+#include<iostream>
+#include<vector>
+#include<algorithm>
+typedef long long ll;
+using namespace std;
+//string class find,substr(start,len)
+int main(void)
+{
+	// 0 ~9 까지니까 1023이면 될듯. 
+	int size;
+	int len;
+	string word;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		word.clear();
+		cin >> word;
+		for(int k = 1; k < 10; k++)
+		{
+			if(word.substr(0,k).compare(word.substr(k,k)) == 0){
+				printf("#%d %d\n",i+1,k);
+				break;
+			}
+		}
+		
+		
+	}
+	return 0;
+}
