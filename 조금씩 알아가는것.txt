@@ -49,3 +49,16 @@ auto는 형을 자동으로 파악해서 지정해줌. int로 해도됨. for(typ
 
 14. prefix sum은 pre[0] = original[0]
 for i =1 ;   pre[i] = pre[i-1] + origin[i];
+
+15. int *arr = new int[5](); 로 하면 0으로 초기화 가능
+
+16. string class 이용
+substr로 자르기 가능.
+string table에서 find 함수로 글자의 index 찾기 가능.
+string resize 가능.
+
+reverse로 string 뒤집기 가능.
+ for (int u=0; u < 8; u++) {
+                    if (N[u] == 1)  num+=1<<u;//
+ } // pow 대신 비트연산자 이용 가능.
+reverse(b.begin(), b.end()); 함수 있음.(배열 뒤집기)
