@@ -1,0 +1,30 @@
+#include<cstdio>
+#include<cstring>
+#include<iostream>
+#include<vector>
+#include<algorithm>
+typedef long long ll;
+using namespace std;
+int main(void)
+{
+	// 0 ~9 까지니까 1023이면 될듯. 
+	int size;
+	int p,q,r,s,w;
+	int acost,bcost;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d %d %d %d %d",&p,&q,&r,&s,&w);
+		bcost = 0;
+		acost = w * p;
+		if(w <= r)//월간 사용량이 더 적은경우. 
+		{
+			bcost = q;
+		}else{
+			bcost = q + (w - r) * s;
+		}
+		
+		printf("#%d %d\n",i+1,acost < bcost ? acost : bcost);
+	}
+	return 0;
+}
