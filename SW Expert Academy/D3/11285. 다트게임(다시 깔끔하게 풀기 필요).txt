@@ -1,0 +1,56 @@
+#include<cstdio>
+#include<cstring>
+#include<iostream>
+#include<vector>
+#include<cmath>
+#include<algorithm>
+typedef long long ll;
+using namespace std;
+//가장  바깥에 꽂힌경우 0점인것만 처리. 
+int main(void)
+{
+	int size;
+	int len;
+	int posx,posy;
+	float distance;
+	int sum;
+	float quot;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d",&len);
+		sum = 0;
+		for(int x = 0; x < len; x++)
+		{
+			scanf("%d %d",&posx,&posy);
+			distance = sqrt((float)(posx*posx) + (float)(posy*posy));	
+			if(distance>200) continue;
+			quot = distance/20;
+			
+			if(quot >= 0 && quot <=1){
+				sum += 10;
+			}else if(quot > 1 && quot <=2){
+				sum += 9;
+			}else if(quot > 2 && quot <=3){
+				sum += 8;
+			}else if(quot > 3 && quot <=4){
+				sum += 7;
+			}else if(quot > 4 && quot <=5){
+				sum += 6;
+			}else if(quot > 5 && quot <=6){
+				sum += 5;
+			}else if(quot > 6 && quot <=7){
+				sum += 4;
+			}else if(quot > 7 && quot <=8){
+				sum += 3;
+			}else if(quot > 8 && quot <=9){
+				sum += 2;
+			}else if(quot > 9 && quot <=10){
+				sum += 1;
+			}
+			
+		}
+		printf("#%d %d\n",i+1,sum);
+	}
+	return 0;
+}
