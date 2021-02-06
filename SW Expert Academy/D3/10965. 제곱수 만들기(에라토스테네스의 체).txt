@@ -43,17 +43,22 @@ int main(void)
 			if( n % list[index] == 0){
 				count++;
 				n /= list[index];
+				
 			}
 			
 			if( n % list[index] != 0){
 				if(count %2 != 0) ans *= list[index];
+				if(!prime[n]){
+					ans *= n;
+					break;
+				}
 				index++;
 				if(index == pos){
 					ans *= n;
 					break;
 				}
 				count = 0;
-			}
+			}l
 		}
 		printf("#%d %d\n",i+1,ans);
 	}
