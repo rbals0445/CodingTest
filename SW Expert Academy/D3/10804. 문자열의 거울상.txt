@@ -1,0 +1,44 @@
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+#define MAX 10000001
+typedef long long ll;
+using namespace std;
+// 97부터 small a 
+void solve(char c)
+{
+	switch(c)
+	{
+		case 'b' :
+			printf("d");
+			break;
+		case 'd' :
+			printf("b");
+			break;
+		case 'p' :
+			printf("q");
+			break;
+		case 'q' :
+			printf("p");
+			break;
+	}
+}
+int main(void)
+{
+	int tc,len;
+	char word[1001];
+	int flag;
+	scanf("%d",&tc);
+	for(int i = 0; i < tc; i++)
+	{
+		scanf("%s",word);
+		len = strlen(word);
+		printf("#%d ",i+1);
+		for(int x = len-1; x >= 0; x--)
+			solve(word[x]);
+		printf("\n");
+	}
+	
+	
+	return 0;
+}
