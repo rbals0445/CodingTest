@@ -1,0 +1,47 @@
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+#define MAX 10000001
+typedef long long ll;
+using namespace std;
+// 97부터 small a 
+int main(void)
+{
+	int tc,len;
+	int *count;
+	char word[101];
+	int flag;
+	scanf("%d",&tc);
+	for(int i = 0; i < tc; i++)
+	{
+		count = new int[27]();//97 ~ 122
+		flag = 0;
+		scanf("%s",word);
+		len = strlen(word);
+		for(int x = 0; x < len; x++)
+		{
+			count[word[x] - 97]++;
+		}
+		printf("#%d ",i+1);
+		for(int x = 0; x < 27; x++)
+		{
+			if(count[x] == 0) continue;
+			
+			if(count[x] % 2 != 0)
+			{
+				printf("%c",x+97);
+				flag++;
+			}
+			
+		}
+		if(flag == 0){
+			printf("Good\n");
+		}else{
+			printf("\n");
+		}
+		delete[] count;
+	}
+	
+	
+	return 0;
+}
