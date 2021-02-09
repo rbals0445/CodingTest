@@ -1,0 +1,35 @@
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+#define MAX 10000001
+typedef long long ll;
+using namespace std;
+int main(void)
+{
+	int num;
+	int sum = 0;
+	int cnt;
+	scanf("%d",&num);
+	
+	cnt = num / 5;
+	if(num % 5 != 0)
+	{
+		for(int i = cnt; i >= cnt; i--)//500원을 많이 쓸 수록 좋음 
+		{
+			if( (num-5*i) % 3 == 0)
+			{
+				sum += i + (num- 5*i) / 3;
+				break;
+			}
+		}
+	}else{
+		printf("%d\n",num/5);
+		return 0;
+	}
+	/*
+	if(sum) printf("%d\n",sum);
+	else printf("-1\n");
+	*/
+	printf("%d\n",sum == 0? -1 : sum);
+    return 0;
+}
