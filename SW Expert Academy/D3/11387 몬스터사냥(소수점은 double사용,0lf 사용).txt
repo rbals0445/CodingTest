@@ -1,0 +1,24 @@
+#include<cstdio>
+typedef long long ll;
+using namespace std;
+int main(void)
+{
+	int size;
+	
+	double sum,d,l,n;
+	printf("%f\n",b);
+	printf("%lf\n",kk);
+	scanf("%d",&size);
+	for(int t = 0; t < size; t++)
+	{
+		sum = 0;
+		scanf("%lf %lf %lf",&d,&l,&n);
+		for(int i = 0; i < n; i++)
+		{
+			
+			sum += d*(1 + i * l/100.0);
+		}
+		printf("#%d %.0lf\n",t+1,sum);
+	}	
+	return 0;
+}
