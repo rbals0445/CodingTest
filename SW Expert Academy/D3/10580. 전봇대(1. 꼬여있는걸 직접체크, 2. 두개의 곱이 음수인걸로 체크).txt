@@ -1,0 +1,37 @@
+#include<cstdio>
+#include<cmath>
+#include<vector>
+typedef long long ll;
+using namespace std;
+int main(void)
+{
+	int size;
+	int num;
+	int a,b;
+	int len;
+	int cnt;
+	int tx,ty;
+	int A[10001];
+	int B[10001];
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		cnt = 0;
+		scanf("%d",&num);
+		for(int k = 0; k < num; k++)
+		{
+			
+			scanf("%d %d",&A[k],&B[k]);
+		}
+		for(int x = 0; x < num; x++)
+		{
+			for(int y = x+1 ; y < num; y++)
+			{
+					if((A[x] - A[y]) * (B[x]-B[y]) < 0)
+						cnt++;
+			}
+		}
+		printf("#%d %d\n",i+1,cnt);
+	}
+	return 0;
+}
