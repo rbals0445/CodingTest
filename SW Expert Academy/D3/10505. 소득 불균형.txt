@@ -1,0 +1,35 @@
+#include<cstdio>
+#include<cmath>
+#include<vector>
+typedef long long ll;
+using namespace std;
+int main(void)
+{
+	int size;
+	int num;
+	int p[10001];
+ 	int sum,cnt;
+ 	double avg;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%d",&num);
+		sum = 0;
+		cnt = 0;
+		for(int x = 0; x < num; x++)
+		{
+			scanf("%d",&p[x]);
+			sum += p[x];
+		}
+		avg = sum /(double)num;
+		
+		for(int x = 0; x < num; x++)
+		{
+			if( avg >= (double)p[x])
+				cnt++;
+		}
+		printf("#%d %d\n",i+1,cnt);
+		
+	}
+	return 0;
+}
