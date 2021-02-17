@@ -1,0 +1,19 @@
+#include<cstdio>
+typedef long long ll;
+using namespace std;
+int main(void)
+{
+	int size;
+	ll n,m,t,t2;
+	scanf("%d",&size);
+	for(int i = 0; i < size; i++)
+	{
+		scanf("%lld %lld",&n,&m);
+		t = (1<<n)-1;
+		if( (m&t) == t)
+			printf("#%d ON\n",i+1);
+		else
+			printf("#%d OFF\n",i+1);
+	}
+	return 0;
+}
