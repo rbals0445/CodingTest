@@ -1,0 +1,31 @@
+#include<cstdio>
+#include<cstring>
+#include<algorithm>
+#define MAX 10000001
+typedef long long ll;
+using namespace std;
+// 두개중 작은값이 동시에 구독할 수 있는 최대값.
+//  2개의 합에서 N을 빼면 됨. 만약 0보다 크면 그게 최소값, 0보다 작으면 0이다 
+int main(void)
+{
+	int num;
+	int d,h,m,t;
+	
+	scanf("%d",&num);
+	for(int i = 0; i < num; i++)
+	{
+		scanf("%d",&d);
+		t = d<<1;
+		if( t >= 60 ){
+			h = t / 60;
+			m = t - (h * 60);
+		}else{
+			h = 0;
+			m = t;
+		}
+		printf("#%d %d %d\n",i+1,h==12? 0 : h,m);
+	}
+	
+	
+    return 0;
+}
