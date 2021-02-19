@@ -26,6 +26,7 @@ vector의 요소들을 vector = []로 비우고 싶다면 v.clear()를 활용하
 erase는 원소를 지우는것이다.
 
 8. sort에서 쓰는 comp는 매개변수 type 주의해야한다. 또한 i > j 는 앞이 뒤보다 크다는 말이므로(descending)
+bool type이다
 
 9. bfs+dfs 느낌의 단어 끼워넣기 문제 풀다가 느낀점.
 아.. 1 1 1 0 0 기억하며 범위 설정을 진짜 꼼꼼하게 하자.
