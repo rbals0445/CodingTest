@@ -1,5 +1,49 @@
-최고의쌍
-1. 123 456 789 0
-
-100 000 000
-123 456 789
+	#include<cstdio>
+	#include<algorithm>
+	typedef long long ll;
+	using namespace std;
+	int n[1005]; 
+	int check(int n)
+	{
+		int prev;
+		while(n){
+			if(n / 10 == 0) return 1;
+			prev = n%10;
+			n /= 10;
+			if(prev-1 != n%10) return 0;
+		}
+	}
+	void solve(int tc,int i)
+	{
+		int max = -999;
+		   for(int x = tc-1; x >=0 ; x--)
+	        {
+	        	for(int y = x-1; y >=0; y--)
+	        	{
+	        		if(check(n[x] * n[y])){
+	        			if(max < n[x] * n[y])
+	        				max = n[x] * n[y];
+					}
+	        		
+				}
+			}
+			printf("#%d %d\n",i+1,max < 0 ? -1 : max);
+			return;
+	}
+	int main(void)
+	{
+	    int num;
+	    int tc;
+	    scanf("%d",&num);
+	    for(int i = 0; i < num; i++)
+	    {
+	        scanf("%d",&tc);
+	        for(int k = 0; k < tc; k++)
+	        {
+	            scanf("%d",&n[k]);
+	        }
+			//solve
+			solve(tc,i);
+	    }
+	    return 0;
+	}
