@@ -1,0 +1,45 @@
+#include<cstdio>
+#include<algorithm>
+typedef long long ll;
+using namespace std;
+int main(void)
+{
+	int tc;
+	int n;
+	int value;
+	int sum;
+	int card[12];
+	int th; 
+	scanf("%d",&tc);
+	for(int i = 0; i < tc; i++)
+	{
+		scanf("%d",&n);
+		sum = 0;
+		th = 0;
+		for(int k = 2; k<= 11; k++)
+		{
+			if(k >= 2 && k<=9)	card[k] = 4;
+			else if(k == 10) card[k] = 16;
+			else card[k] = 4;
+		}
+	
+		for(int x = 0; x < n; x++)
+		{
+			scanf("%d",&value);
+			sum += value;
+			card[value]--;
+		}
+		
+		// 13이 나왔어 52-20- 13 > 13 GUZUA 이런식 
+		for(int x = 2; x <= 11; x++)
+		{
+			if(sum + x > 21){
+				th += card[x];
+			}
+		}
+		
+		printf("#%d %s\n",i+1, th >= 52-n-th ? "STOP" : "GAZUA");
+	}
+	
+	return 0;
+}
