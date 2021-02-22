@@ -1,0 +1,103 @@
+#include<cstdio>
+#include<queue>
+typedef long long ll;
+using namespace std;
+int board[305][305];
+int board2[305][305];
+bool visited[305][305];
+int mx[4] = {0,0,1,-1}; //동 서 남 북 
+int my[4] = {1,-1,0,0};
+int year; 
+int solve(int n,int m)
+{
+	int tx,ty;
+	int qx,qy;
+	int flag,cnt = 0;
+	int sum = 0;
+	queue<pair <int, int>> q;
+	
+	for(int i = 0; i < n; i++)
+	{
+		for(int j = 0; j < m; j++)
+		{
+			board2[i][j] = board[i][j];
+			sum += board[i][j];
+			if(!board[i][j] || visited[i][j]) continue;
+			visited[i][j] = 1;
+			q.push(make_pair(i,j));
+			while(!q.empty())
+			{
+				qx = q.front().first;
+				qy = q.front().second;
+				q.pop();
+				for(int k = 0; k < 4; k++)
+				{	
+					tx = qx + mx[k];
+					ty = qy + my[k];
+					if(board[tx][ty] && !visited[tx][ty])
+					{
+						q.push(make_pair(tx,ty));
+						visited[tx][ty] = 1;
+					}
+				}	
+			}
+			cnt++;
+			
+			// 마지막에 1개만 남은경우 
+		}
+	}
+	if(cnt > 1){
+		printf("%d\n",year);
+		return 1;
+	} 
+	if(sum == 0){
+		printf("0\n");
+		return 0;
+	}
+	
+	for(int i = 0; i < n; i++)
+	{
+		for(int j = 0; j < m; j++)
+		{	
+			visited[i][j] = 0;
+			if(!board2[i][j]) continue;// board가 0이 될 수 있기때문. 
+			for(int k = 0; k < 4; k++)
+			{
+				tx = i + mx[k];
+				ty = j + my[k];
+				if(!board2[tx][ty])
+				{
+					//동서남북이 0 이면
+					board[i][j]--;
+					if(board[i][j] < 0) board[i][j] = 0;
+				}
+			}
+		}
+	}
+	year++;
+	
+	//1년 지남  
+	
+	return 2;
+}
+
+int main(void)
+{
+	int n,m;
+	//n 행 m 열
+	scanf("%d %d",&n,&m);
+	
+	for(int i = 0; i < n; i++)
+	{
+		for(int j = 0; j < m; j++)
+		{
+			scanf("%d",&board[i][j]);
+		}
+	}
+	//printf("\n") ;
+	while(1){
+		if(solve(n,m) != 2)
+			break;
+	}
+	return 0;
+}
