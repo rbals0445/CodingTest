@@ -1,0 +1,50 @@
+#include <string>
+#include <vector>
+#include <queue>
+#include <algorithm>
+using namespace std;
+bool comp(int a ,int b){
+	return a > b;
+}
+
+int solution(vector<int> priorities, int location) {
+   int answer = 0;
+    int sz = priorities.size();
+    int arr[101] = {0,};
+    vector<int> v;
+    queue<pair<int, int>> q;
+    int temp = 0;
+    
+    
+    for(int i = 0; i < sz; i++)
+    {
+        arr[i] = priorities[i];
+    }
+    
+    sort(arr,arr+sz,comp);
+    
+    //중복제거된 벡터
+    
+    for(int i = 0; i < sz; i++)
+    {
+        q.push(make_pair(priorities[i],i));
+    }
+    // prioirty, location, 0(ret value)
+    while(!q.empty())
+    {    
+        int fi = q.front().first;
+        int se = q.front().second;
+        
+        q.pop();
+        if(arr[temp] == fi && location == se){
+        	return ++answer;
+		}else if(arr[temp] == fi && location != se ){
+			//최대값은 같은데, 위치는ㅇ ㅏ닌경우 
+			answer++; 	
+			temp++;
+		}else{
+			q.push(make_pair(fi,se));	
+		}
+		   
+    }
+}
