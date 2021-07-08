@@ -1,0 +1,49 @@
+#include<cstdio>
+#include<cmath>
+typedef long long int ll;
+bool sieve[1000005]; 
+bool checked[1000005];
+using namespace std;
+int main(void)
+{
+   ll ans = 0;
+   ll min, max; 
+   ll s_min, s_max;
+   scanf("%lld %lld",&min, &max);
+
+   s_min = (ll)(sqrt(min));
+   s_max = (ll)(sqrt(max));
+   ll square;  
+   // 아래 최대 100만 10^6
+   // 위에 최대 100만, 위에는 10^2 안으로 줄여야함. 
+   for(ll i = 2; i <= s_max ; i++)
+   {   
+      //printf("%d\n",sieve[i]);
+      if(sieve[i] == 1) continue;
+    
+      square = i * i;   
+      ll t_min = min;
+      ll t_max = max;
+      for(int k = i*2; k <= s_max; k+= i)
+      {
+         sieve[k] = 1;
+         //cnt++;
+      }
+      //1000 1001 1002 1003 1004
+      //100 + ( 6 - (100%6)) == 최초 나누기 지점 
+      ll t = square - (t_min % square);
+      if(t == square){
+    	t = 0;
+	  }
+      for(ll z = t+t_min; z <= max; z+= square){
+      	if(!checked[z-min]) {
+		  checked[z-min] = 1;
+		  ans++;
+		  
+		}
+	  }
+   }
+   printf("%d\n", max-min+1-ans);
+   
+   return 0;
+}
